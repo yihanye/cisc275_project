@@ -70,18 +70,9 @@ public class Animal
 				yInc = yInc * randomDirection();	
 			}
 		}
-//		public void updateDirection(int pos, int inc,int uplimit, int bottomlimit) {
-//			if(pos>=uplimit || pos < bottomlimit) {
-//				inc *= -1;
-//			}
-//			else {
-//				inc = inc * randomDirection();
-//			}
-//		}
 		//move the animal
 		public void updatePosition() {
 			updateXDirection();
-			//updateDirection(xPos, xInc, 900, 0);
 			updateYDirection();
 			xPos = (xPos + xInc) % GameView.frameWidth;
 			yPos = (yPos + yInc) % GameView.frameHeight;

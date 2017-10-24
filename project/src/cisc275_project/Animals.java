@@ -11,14 +11,6 @@ public class Animals {
 		this.animals = animals;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public List<Animal> getAnimals() {
 		return animals;
 	}
@@ -26,8 +18,6 @@ public class Animals {
 	public void setAnimals(List<Animal> animals) {
 		this.animals = animals;
 	}
-
-
 	
 	public void update() {
 		for(Animal a: animals) {

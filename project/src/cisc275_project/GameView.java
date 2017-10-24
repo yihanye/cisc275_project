@@ -15,9 +15,10 @@ import javax.swing.JPanel;
 public class GameView extends JPanel{
     static JFrame frame = createFrame();
     static GameModel model = new GameModel();
-    static BufferedImage img = createImage();
-    static BufferedImage background = background();
-    static BufferedImage net = createNet();
+    static BufferedImage green = createImg("green");
+    static BufferedImage gray = createImg("gray");
+    static BufferedImage background = createImg("background");
+    static BufferedImage net = createImg("red");
 	final static int frameWidth = 1000;
     final static int frameHeight = 600;
 //    final static int uperBound = 100;
@@ -26,12 +27,9 @@ public class GameView extends JPanel{
     public GameModel getModel() {
 		return model;
 	}
-
 	public void setModel(GameModel model) {
 		this.model = model;
 	}
-        
-    
 	public static JFrame createFrame() {
 		JFrame frame = new JFrame();
 		frame.getContentPane().add(new GameView());
@@ -51,44 +49,21 @@ public class GameView extends JPanel{
     	 g2d.drawImage(background,0,0, Color.gray, this);
     	 g2d.drawImage(net, trans,this);
     	 
-    	 paintAnimals(g2d, model.getBlueFishList());    	 
+    	 paintAnimals(g2d, model.getBlueFishList(),green);
+    	 paintAnimals(g2d,model.getBlueCrabList(),gray);
     	 
     }
 	
-    public void paintAnimals(Graphics g, Animals animals) {
+    public void paintAnimals(Graphics g, Animals animals, BufferedImage img) {
     		for(Animal a: animals.getAnimals()) {
     			g.drawImage(img, a.getxPos(),a.getyPos(), Color.gray, this);
     		}
     }
     
-    private static BufferedImage createImage(){
-    		BufferedImage img;
-    		try {	
-    			img = ImageIO.read(new File("images/green.png"));
-    			return img;
-    		}
-    		catch (IOException e) {
-    			e.printStackTrace();
-    		}
-    		return null;
-    }
-    private static BufferedImage createNet(){
+    private static BufferedImage createImg(String name){
 		BufferedImage img;
 		try {	
-			img = ImageIO.read(new File("images/red.png"));
-			return img;
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-}
-    
-    //this is bad-------------------------------------------------
-    private static BufferedImage background(){
-		BufferedImage img;
-		try {	
-			img = ImageIO.read(new File("images/background.png"));
+			img = ImageIO.read(new File("images/"+name+".png"));
 			return img;
 		}
 		catch (IOException e) {

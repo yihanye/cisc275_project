@@ -5,12 +5,14 @@ import java.util.List;
 
 public class GameModel {
 	private Animals blueFishList;
+	private Animals blueCrabList;
 	private int score;
 	private int time;
 	private Net net;
 	//Constructor
 	public GameModel() {
-		this.blueFishList = createBFList();
+		this.blueFishList =BlueFish.createBFList();
+		this.blueCrabList = BlueCrab.createBCList();
 		this.net = new Net(500,50,0,0,0,10);
 		this.score = 0;
 		this.time = 100;
@@ -18,6 +20,9 @@ public class GameModel {
 	
 	public Animals getBlueFishList() {
 		return blueFishList;
+	}
+	public Animals getBlueCrabList() {
+		return blueCrabList;
 	}
 
 	public void setBlueFishList(Animals blueFishList) {
@@ -36,23 +41,9 @@ public class GameModel {
 		return net;
 	}
 
-
-	//create BlueFishList
-	public Animals createBFList(){
-		BlueFish bf1 = new BlueFish(800,100);
-		BlueFish bf2 = new BlueFish(200,200);
-		BlueFish bf3 = new BlueFish(500,300);
-
-		List<Animal> bfList = new ArrayList<Animal>();
-		bfList.add(bf1);
-		bfList.add(bf2);
-		bfList.add(bf3);
-		Animals reuslt = new Animals("BlueFish",bfList);
-		return reuslt;
-	}
-
 	public void update() {
 		blueFishList.update();
+		blueCrabList.update();
 		net.update();
 	}
 	
