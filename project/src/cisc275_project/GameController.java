@@ -1,13 +1,16 @@
-package cisc275_project;
+package project.src.cisc275_project;
+
+import java.awt.event.MouseAdapter;
 
 public class GameController {
 	GameView view;
 	GameModel model;
-	
+
 	public GameController(GameView view, GameModel model) {
 		this.view = view;
 		this.model = model;
 	}
+
 	
 	public void start() {	
 		view.setModel(model);

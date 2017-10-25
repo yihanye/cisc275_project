@@ -1,4 +1,4 @@
-package cisc275_project;
+package project.src.cisc275_project;
 
 public class GameRunner {
 	public static void main(String[] args) {

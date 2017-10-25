@@ -1,12 +1,15 @@
-package cisc275_project;
+package project.src.cisc275_project;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+//import java.awt.Color;
+//import java.awt.Graphics;
+//import java.awt.Graphics2D;
+import java.awt.event.MouseAdapter;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.awt.event.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -37,9 +40,16 @@ public class GameView extends JPanel{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(frameWidth, frameHeight);
 		frame.setVisible(true);
+		frame.addMouseListener(new event());
 		return frame;
     }
-	
+
+    //where should I put this?
+    static class event extends MouseAdapter{
+    	public void mouseClicked(MouseEvent e){
+			model.getNet().changeSwing();
+		}
+	}
     public void paint(Graphics g) {
     	
     	 Graphics2D g2d = (Graphics2D)g;
@@ -48,10 +58,9 @@ public class GameView extends JPanel{
     	 trans.rotate( Math.toRadians(model.getNet().getRotation()) );
     	 g2d.drawImage(background,0,0, Color.gray, this);
     	 g2d.drawImage(net, trans,this);
-    	 
     	 paintAnimals(g2d, model.getBlueFishList(),green);
     	 paintAnimals(g2d,model.getBlueCrabList(),gray);
-    	 
+
     }
 	
     public void paintAnimals(Graphics g, Animals animals, BufferedImage img) {
@@ -63,7 +72,7 @@ public class GameView extends JPanel{
     private static BufferedImage createImg(String name){
 		BufferedImage img;
 		try {	
-			img = ImageIO.read(new File("images/"+name+".png"));
+			img = ImageIO.read(new File("project/images/"+name+".png"));
 			return img;
 		}
 		catch (IOException e) {
@@ -75,7 +84,7 @@ public class GameView extends JPanel{
 	public static void update() {
 		frame.repaint(); 
 	}
-	
+
     public static void main(String[] args) {    
     	for(int i = 0; i < 10000; i++){
     		update();

@@ -1,4 +1,4 @@
-package cisc275_project;
+package project.src.cisc275_project;
 
 import java.util.Random;
 
@@ -74,24 +74,24 @@ public class Animal
 		public void updatePosition() {
 			updateXDirection();
 			updateYDirection();
-			xPos = (xPos + xInc) % GameView.frameWidth;
-			yPos = (yPos + yInc) % GameView.frameHeight;
+			xPos = (xPos + xInc);
+			yPos = (yPos + yInc);
 		}
 		
 		public void update() {
 			updatePosition();
 		}
 	
-	    public static void main(String[] args) {
-	    		Animal a1 = new Animal("animal",0,0,1,2,false);
-	    		for(int i = 0; i < 1000; i++){
-	    			a1.update();
-	    			System.out.println(a1);
-	    			try {
-	    				Thread.sleep(300);
-	    			} catch (InterruptedException e) {
-	    				e.printStackTrace();
-	    			}
-	    		}
-	    }
+//	    public static void main(String[] args) {
+//	    		Animal a1 = new Animal("animal",0,0,1,2,false);
+//	    		for(int i = 0; i < 1000; i++){
+//	    			a1.update();
+//	    			System.out.println(a1);
+//	    			try {
+//	    				Thread.sleep(300);
+//	    			} catch (InterruptedException e) {
+//	    				e.printStackTrace();
+//	    			}
+//	    		}
+//	    }
 }

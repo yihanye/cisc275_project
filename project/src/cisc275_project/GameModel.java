@@ -1,4 +1,4 @@
-package cisc275_project;
+package project.src.cisc275_project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class GameModel {
 	public GameModel() {
 		this.blueFishList =BlueFish.createBFList();
 		this.blueCrabList = BlueCrab.createBCList();
-		this.net = new Net(500,50,0,0,0,10);
+		this.net = Net.createNet();
 		this.score = 0;
 		this.time = 100;
 	}
@@ -48,11 +48,8 @@ public class GameModel {
 	}
 	
 	public String toString() {
-		List<Animal> temp = (List<Animal>) blueFishList.getAnimals();
-		int x1 = temp.get(0).getxPos();
-		int x2 = temp.get(1).getxPos();
-		int x3 = temp.get(2).getxPos();
-		return x1+" "+x2+" "+x3;
+
+		return blueCrabList.toString();
 	}
 	public static void main(String[] args) {
 		GameModel model = new GameModel();
