@@ -1,8 +1,5 @@
 package project.src.cisc275_project;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GameModel {
 	private Animals blueFishList;
 	private Animals blueCrabList;
@@ -25,10 +22,6 @@ public class GameModel {
 		return blueCrabList;
 	}
 
-	public void setBlueFishList(Animals blueFishList) {
-		this.blueFishList = blueFishList;
-	}
-
 	public int getScore() {
 		return score;
 	}
@@ -41,26 +34,31 @@ public class GameModel {
 		return net;
 	}
 
+	public void clicked(){
+		net.stopSwing();
+	}
+
 	public void update() {
-		blueFishList.update();
-		blueCrabList.update();
+		blueFishList.update(net);
+		blueCrabList.update(net);
 		net.update();
 	}
 	
 	public String toString() {
-
 		return blueCrabList.toString();
 	}
-	public static void main(String[] args) {
-		GameModel model = new GameModel();
-		for(int i = 0; i < 1000; i++){
-			model.update();
-			System.out.println(model);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+
+//	public static void main(String[] args) {
+//		GameModel model = new GameModel();
+//		for(int i = 0; i < 1000; i++){
+//			model.update();
+//			System.out.println(model);
+//			try {
+//				Thread.sleep(300);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	}
+
 }

@@ -1,8 +1,6 @@
 package project.src.cisc275_project;
 
-//import java.awt.Color;
-//import java.awt.Graphics;
-//import java.awt.Graphics2D;
+
 import java.awt.event.MouseAdapter;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -27,9 +25,10 @@ public class GameView extends JPanel{
 //    final static int uperBound = 100;
 //    final static int bottomBound = 600;
 
-    public GameModel getModel() {
-		return model;
-	}
+//    public GameModel getModel() {
+//		return model;
+//	}
+
 	public void setModel(GameModel model) {
 		this.model = model;
 	}
@@ -40,32 +39,31 @@ public class GameView extends JPanel{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(frameWidth, frameHeight);
 		frame.setVisible(true);
-		frame.addMouseListener(new event());
+		frame.addMouseListener(new MyMouseEvent());
 		return frame;
     }
 
-    //where should I put this?
-    static class event extends MouseAdapter{
+    static class MyMouseEvent extends MouseAdapter{
     	public void mouseClicked(MouseEvent e){
-			model.getNet().changeSwing();
+			model.clicked();
 		}
 	}
     public void paint(Graphics g) {
-    	
     	 Graphics2D g2d = (Graphics2D)g;
     	 AffineTransform trans = AffineTransform.getTranslateInstance
     			 (model.getNet().getxPos(),model.getNet().getyPos());
     	 trans.rotate( Math.toRadians(model.getNet().getRotation()) );
     	 g2d.drawImage(background,0,0, Color.gray, this);
-    	 g2d.drawImage(net, trans,this);
     	 paintAnimals(g2d, model.getBlueFishList(),green);
     	 paintAnimals(g2d,model.getBlueCrabList(),gray);
-
-    }
+		 g2d.drawImage(net, trans,this);
+//		g2d.drawImage(net, 200,120,this);
+//		g2d.drawImage(green, 100,100,this);
+	}
 	
     public void paintAnimals(Graphics g, Animals animals, BufferedImage img) {
     		for(Animal a: animals.getAnimals()) {
-    			g.drawImage(img, a.getxPos(),a.getyPos(), Color.gray, this);
+    			g.drawImage(img, (int)a.getxPos(),(int)a.getyPos(), Color.gray, this);
     		}
     }
     

@@ -15,9 +15,6 @@ public class Animals {
 		return animals;
 	}
 
-//	public void setAnimals(List<Animal> animals) {
-//		this.animals = animals;
-//	}
 	public String toString(){
 		String result = "";
 		for(Animal a: this.animals){
@@ -26,9 +23,11 @@ public class Animals {
 		return result;
 	}
 
-	public void update() {
+
+	public void update(Net n) {
 		for(Animal a: animals) {
-			a.update();
+			a.update(n);
+			a.isCollision(n);
 		}
 	}
 

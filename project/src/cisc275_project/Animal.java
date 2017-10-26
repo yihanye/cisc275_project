@@ -5,10 +5,8 @@ import java.util.Random;
 public class Animal 
 	{	
 		String name;
-		int xPos, yPos; //Position of center of the animal
-		int xInc, yInc; //speed of the certain animal
-		//int weith, height; //weith and height of the image of a certain animal
-		//int[] position = {xPos, yPos, xInc, yInc};
+		double xPos, yPos; //Position of center of the animal
+		double xInc, yInc; //speed of the certain animal
 		boolean caught; //check if the animal is caught
 	    
 	    // Constructor
@@ -25,19 +23,19 @@ public class Animal
 	    	return name + " is on position" + "("+xPos+", "+ yPos+") with speed"+ "("+xInc+", "+ yInc+")" ;
 	    }
 	    
-		public int getxPos() {
+		public double getxPos() {
 			return xPos;
 		}
 
-		public int getyPos() {
+		public double getyPos() {
 			return yPos;
 		}
 
-		public int getxInc() {
+		public double getxInc() {
 			return xInc;
 		}
 
-		public int getyInc() {
+		public double getyInc() {
 			return yInc;
 		}
 
@@ -48,6 +46,7 @@ public class Animal
 		public void setCaught(boolean caught) {
 			this.caught = caught;
 		}
+
 		//change the direction of the animal
 		public int randomDirection() {
 			Random rand = new Random();
@@ -77,9 +76,27 @@ public class Animal
 			xPos = (xPos + xInc);
 			yPos = (yPos + yInc);
 		}
-		
-		public void update() {
+
+		public void update(Net n) {
 			updatePosition();
+			updateCollision(n);
+		}
+		//this is bad
+		public boolean isCollision(Net n){
+	    	return (n.goDown())&(Math.abs(getxPos()-n.getxPos())<50) & (Math.abs(getyPos()-n.getyPos())<50);
+		}
+
+		public void updateCollision(Net n){
+			if(isCollision(n)){
+				this.caught(n);
+				n.updateCollision();
+			}
+		}
+
+		public void caught(Net n){
+			xInc = -n.getxInc();
+			yInc = -n.getyInc();
+
 		}
 	
 //	    public static void main(String[] args) {
@@ -94,4 +111,5 @@ public class Animal
 //	    			}
 //	    		}
 //	    }
+
 }
