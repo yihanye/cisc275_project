@@ -15,11 +15,16 @@ public class Animals {
 		return animals;
 	}
 
+	public int number(){
+		return getAnimals().size();
+	}
+
 	public String toString(){
 		String result = "";
-		for(Animal a: this.animals){
-			result += " xPox:" + a.getxPos();
-		}
+//		for(Animal a: this.animals){
+//			result += " xPox:" + a.getxPos();
+//		}
+		result += number();
 		return result;
 	}
 

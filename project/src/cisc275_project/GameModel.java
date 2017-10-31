@@ -48,17 +48,26 @@ public class GameModel {
 		return blueCrabList.toString();
 	}
 
-//	public static void main(String[] args) {
-//		GameModel model = new GameModel();
-//		for(int i = 0; i < 1000; i++){
-//			model.update();
-//			System.out.println(model);
-//			try {
-//				Thread.sleep(300);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
+	public static void main(String[] args) {
+		GameModel model = new GameModel();
+		for(int i = 0; i < 1000; i++){
+			if(i==10){
+				model.clicked();
+			}
+			model.update();
+			System.out.println(model.getNet());
+			System.out.println(" NumberOfBlueCrab: "+model.getBlueCrabList());
+			System.out.println(" NumberOfBlueFish: "+model.getBlueFishList());
+			System.out.println(" One " +model.getBlueCrabList().getAnimals().get(0));
+			System.out.println(" One " +model.getBlueFishList().getAnimals().get(0));
+			System.out.println(" ");
+
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }

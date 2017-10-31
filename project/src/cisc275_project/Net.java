@@ -108,21 +108,20 @@ public class Net {
 		resetNet();
 	}
 
-//	public String toString() {
-//		return ""+rotation+" xPos: "+ xPos+" xInc: "+ xInc;
-//	}
-//	public static void main(String[] args) {
-//		Net n = new Net(500, 100, 3,3,45,10);
-//		n.changeSwing();
-//		System.out.println(n);
-//		for(int i = 0; i < 1000; i++){
-//			n.update();
-//			System.out.println(n);
-//			try {
-//				Thread.sleep(300);
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
+	public String toString() {
+		return " net is on position " + "( "+(int)xPos+", "+(int)yPos+" ) with degree of " + rotation;
+	}
+	public static void main(String[] args) {
+		Net n = new Net(500, 100, 3,3,45,10);
+		System.out.println(n);
+		for(int i = 0; i < 1000; i++){
+			n.update();
+			System.out.println(n);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
