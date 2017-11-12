@@ -64,6 +64,10 @@ public class Net {
 		if(caught){
 			xPos -=xInc;
 			yPos -= yInc;
+//			if(xPos<=50){
+//				xPos = 500;
+//				yPos = 50;
+//			}
 		}
 		else{
 			if(atEdge()){

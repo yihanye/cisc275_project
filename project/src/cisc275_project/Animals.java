@@ -32,7 +32,7 @@ public class Animals {
 	public void update(Net n) {
 		for(Animal a: animals) {
 			a.update(n);
-			a.isCollision(n);
+			//a.isCollision(n);
 		}
 	}
 
