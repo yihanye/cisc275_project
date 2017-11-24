@@ -1,6 +1,7 @@
 package project.src.cisc275_project;
 
-import java.awt.event.MouseAdapter;
+import project.src.cisc275_project.Model.GameModel;
+import project.src.cisc275_project.View.GameView;
 
 public class GameController {
 	GameView view;
@@ -14,9 +15,12 @@ public class GameController {
 	
 	public void start() {	
 		view.setModel(model);
+
 	    	for(int i = 0; i < 10000; i++){
 	    		model.update();
 	    		view.update();
+	    		System.out.println(model.getGameState());
+	    		System.out.println(model.getNet());
 	    		try {
 	    			Thread.sleep(100);
 	    		} catch (InterruptedException e) {

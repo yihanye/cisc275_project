@@ -1,23 +1,21 @@
-package project.src.cisc275_project;
+package project.src.cisc275_project.Model;
 /**
 @author Chu Qiao
 @author Mingkun Chen
 @author Yihan Ye
 */
+
 import java.util.Random;
 
 /**
- * This is the class for animal
+ * Represnt an animal in the game
  */
 public class Animal 
 	{
-		/**
-		 *
-		 */
 		String name;
-		double xPos, yPos; //Position of center of the animal
-		double xInc, yInc; //speed of the certain animal
-		boolean caught; //check if the animal is caught
+		double xPos, yPos;
+		double xInc, yInc;
+		boolean caught;
 
 		/**
 		 * Class constructor for animal
@@ -38,7 +36,7 @@ public class Animal
 	    }
 
 		/**
-		 *
+		 * the description of an animal
 		 * @return the string of animal constructor
 		 */
 		public String toString() {
@@ -61,22 +59,7 @@ public class Animal
 			return yPos;
 		}
 
-//		public double getxInc() {
-//			return xInc;
-//		}
-//
-//		public double getyInc() {
-//			return yInc;
-//		}
-//
-//		public boolean isCaught() {
-//			return caught;
-//		}
-//
-//		public void setCaught(boolean caught) {
-//			this.caught = caught;
-//		}
-
+		public boolean getCaught(){ return caught;}
 		/**
 		 * generate the random direction
 		 * animal will change direction randomly
@@ -93,25 +76,38 @@ public class Animal
 		 * if the animal at edge, the direction will turn back
 		 * otherwise the aniaml direction will change randomly
 		 */
-		public void updateXDirection() {
-			if(xPos >= 900 || xPos < 0) {
-				xInc *= -1;
+
+		public void updateXDirection(Net n) {
+			if(this.caught == false){
+				if(xPos >= 900 || xPos < 0) {
+					xInc *= -1;
+				}
+				else {
+					xInc = xInc * randomDirection();
+				}
 			}
-			else {
-				xInc = xInc * randomDirection();				
+			else{
+				xInc = -n.getxInc();
 			}
 		}
+
 		/**
 		 * update y direction
 		 * if the animal at edge, the direction will turn back
 		 * otherwise this animal's direction will change randomly
 		 */
-		public void updateYDirection() {
-			if(yPos >= 550 || yPos < 100) {
-				yInc *= -1;
+		public void updateYDirection(Net n) {
+			if(this.caught == false){
+
+				if(yPos >= 550 || yPos < 100) {
+					yInc *= -1;
+				}
+				else {
+					yInc = yInc * randomDirection();
+				}
 			}
-			else {
-				yInc = yInc * randomDirection();	
+			else{
+				yInc = -n.getyInc();
 			}
 		}
 
@@ -119,22 +115,23 @@ public class Animal
 		 *update animals's position based on the current x/y direction
 		 *
 		 */
-		public void updatePosition() {
-			updateXDirection();
-			updateYDirection();
-			xPos = (xPos + xInc);
-			yPos = (yPos + yInc);
+		public void updatePosition(Net n) {
+			updateXDirection(n);
+			updateYDirection(n);
+			xPos = xPos + xInc;
+			yPos = yPos + yInc;
 		}
-
 
 		/**
 		 * determine whether this animal has to touched net
 		 * @param n the net that in the game
 		 * @return whether this animal has been caught by the net
 		 */
+
 		public boolean isCollision(Net n){
-	    	return (n.goDown())&(Math.abs(getxPos()-n.getxPos())<50) & (Math.abs(getyPos()-n.getyPos())<50);
+	    	return (n.goDown()) & (Math.abs(getxPos()-n.getxPos())<50) & (Math.abs(getyPos()-n.getyPos())<50) & (!n.getCaught());
 		}
+
 
 		/**
 		 * if it has been determined the animal has touched the net
@@ -143,25 +140,25 @@ public class Animal
 		 */
 		public void updateCollision(Net n){
 			if(isCollision(n)){
-				this.caught(n);
+				this.caught = true;
 				n.updateCollision();
 			}
 		}
 
 		/**
-		 * If the animal was caught, change the animal position increment the same as net
-		 * @param n the net in the game
+		 * if the animal is caught by the net and move at the top of the screen should be removed
+		 * @return whether the fish should be deleted
 		 */
-		public void caught(Net n){
-			xInc = -n.getxInc();
-			yInc = -n.getyInc();
+		public boolean delete(){
+			return this.caught && this.getyPos()<=50;
 		}
 		/**update the status of animal based on the interaction with net
 		 * @param n the net that in the game
 		 */
 		public void update(Net n) {
-			updatePosition();
+			updatePosition(n);
 			updateCollision(n);
+
 		}
 //
 //	    public static void main(String[] args) {
@@ -176,5 +173,4 @@ public class Animal
 //	    			}
 //	    		}
 //	    }
-
 }

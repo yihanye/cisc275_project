@@ -1,13 +1,30 @@
-package project.src.cisc275_project;
+package project.src.cisc275_project.Model;
+/**
+ @author Chu Qiao
+ @author Mingkun Chen
+ @author Yihan Ye
+ */
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * this is the class for blue fish
+ */
 public class BlueFish extends Animal {
+	/**
+	 * Constructor for blueFish
+	 * @param xPos the x position of fish
+	 * @param yPos the y position of fish
+	 */
 	public BlueFish(int xPos, int yPos) {
 		super("blue_fish", xPos, yPos, 4, 1, false);
-	}	
+	}
 	//create BlueFishList
+	/**
+	 * Create an animal list with 3 blue fish
+	 * @return Animal
+	 */
 	public static Animals createBFList(){
 		BlueFish bf1 = new BlueFish(800,100);
 		BlueFish bf2 = new BlueFish(200,200);
