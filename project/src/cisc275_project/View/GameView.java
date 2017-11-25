@@ -19,6 +19,7 @@ public class GameView extends JFrame{
 	public void setModel(GameModel model) {
 		this.model = model;
 		gamePanel.setModel(model);
+		quizPanel.setModel(model);
 	}
 
 	public GameView(){

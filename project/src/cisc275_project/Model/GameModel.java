@@ -6,6 +6,7 @@ public class GameModel {
 	private int score;
 	private int time;
 	private Net net;
+	private QuizList quiz;
 	private boolean quizable= true;
 	public enum STATE{MENU,GAME,QUIZ}
 	private STATE state;
@@ -15,6 +16,7 @@ public class GameModel {
 		this.blueFishList = BlueFish.createBFList();
 		this.blueCrabList = BlueCrab.createBCList();
 		this.net = Net.createNet();
+		this.quiz = QuizList.createQuizList();
 		this.score = 0;
 		this.time = 1000;
 		this.state = STATE.MENU;
@@ -29,6 +31,11 @@ public class GameModel {
 	public int getScore() {
 		return score;
 	}
+
+	public QuizList getQuiz() {
+		return quiz;
+	}
+
 	public void setQuizable(boolean bool){ quizable = bool; }
 	public boolean getQuizable(){return quizable;}
 	public int getTime() {
@@ -46,19 +53,24 @@ public class GameModel {
 
 
 	public void clicked(int x, int y){
+
 		if(getGameState()== STATE.GAME){
 			net.stopSwing();
 			if(!hasCollision()){
 				setQuizable(true);
 			}
 		}
+
 		else if(getGameState() == STATE.MENU){
 			if(x<795 && x>495 && y<380 && y>280){
 				setState(STATE.GAME);
 			}
 		}
+
 		else if(getGameState() == STATE.QUIZ){
-			if((x>400 && x<500 && y > 450 && y<500)||(x>700 && x<800 && y > 450 && y<500)){
+			boolean option1 = (x>400 && x<500 && y > 450 && y<500);
+			boolean option2 = (x>700 && x<800 && y > 450 && y<500);
+			if(quiz.getCurrentQuiz().checkAnswer(option1,option2)){
 				switchBackToGame();
 			}
 		}
@@ -93,6 +105,7 @@ public class GameModel {
 	 */
 	public void switchBackToGame(){
 			setQuizable(false);
+			quiz.nextQuiz();
 			setState(STATE.GAME);
 	}
 

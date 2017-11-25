@@ -44,7 +44,5 @@ public class GamePanel extends JPanel {
         g2d.drawString("TIME:"+model.getTime(),1000,100);
         g2d.drawString("BlueCrab:"+model.getBlueCrabList().number(),1000, 200);
         g2d.drawString("BlueFish:"+model.getBlueFishList().number(),1000, 300);
-
-
     }
 }
