@@ -8,7 +8,7 @@ public class GameModel {
 	private Net net;
 	private QuizList quiz;
 	private boolean quizable= true;
-	public enum STATE{MENU,GAME,QUIZ}
+	public enum STATE{MENU,GAME,QUIZ,EXPLAN,END}
 	private STATE state;
 
 	//Constructor
@@ -18,7 +18,7 @@ public class GameModel {
 		this.net = Net.createNet();
 		this.quiz = QuizList.createQuizList();
 		this.score = 0;
-		this.time = 1000;
+		this.time = 500;
 		this.state = STATE.MENU;
 	}
 	
@@ -31,11 +31,7 @@ public class GameModel {
 	public int getScore() {
 		return score;
 	}
-
-	public QuizList getQuiz() {
-		return quiz;
-	}
-
+	public QuizList getQuiz() { return quiz; }
 	public void setQuizable(boolean bool){ quizable = bool; }
 	public boolean getQuizable(){return quizable;}
 	public int getTime() {
@@ -70,7 +66,15 @@ public class GameModel {
 		else if(getGameState() == STATE.QUIZ){
 			boolean option1 = (x>400 && x<500 && y > 450 && y<500);
 			boolean option2 = (x>700 && x<800 && y > 450 && y<500);
-			if(quiz.getCurrentQuiz().checkAnswer(option1,option2)){
+			if(getQuiz().getCurrentQuiz().checkAnswer(option1,option2)){
+				getQuiz().getCurrentQuiz().setCorrectornot(true);
+			}
+			if(option1||option2){
+				setState(STATE.EXPLAN);
+			}
+		}
+		else if(getGameState() == STATE.EXPLAN){
+			if(x<650 && x>550 && y<450 && y>400){
 				switchBackToGame();
 			}
 		}
@@ -79,6 +83,11 @@ public class GameModel {
 	public void timeUpdate(){
 		time--;
 	}
+
+	public void scoreUpdate(){
+	   score = (6 - getBlueCrabList().getAnimals().size() - getBlueFishList().getAnimals().size())*20
+               + getQuiz().getCurrentNum() * 50;
+    }
 
 	/**
 	 * Check whether there is a collision happened for all animal list
@@ -109,13 +118,24 @@ public class GameModel {
 			setState(STATE.GAME);
 	}
 
+	public void switchToEnd(){
+		if(time == 0){
+			setState(STATE.END);
+		}
+	}
+	public void stateUpdate(){
+		switchToQuiz();
+		switchToEnd();
+	}
+
 	public void update() {
 		if(state == STATE.GAME) {
 			blueFishList.update(net);
 			blueCrabList.update(net);
 			net.update();
 			timeUpdate();
-			switchToQuiz();
+			scoreUpdate();
+			stateUpdate();
 		}
 	}
 	

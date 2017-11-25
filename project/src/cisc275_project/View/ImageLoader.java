@@ -12,6 +12,8 @@ public class ImageLoader {
     static BufferedImage net = createImg("red");
     static BufferedImage quizBackground = createImg("quizBackground");
     static BufferedImage mainBackground = createImg("mainBackground");
+    static BufferedImage explanBackground = createImg("explanBackground");
+    static BufferedImage startBackground = createImg("startBackground");
 
    public static BufferedImage createImg(String name){
         BufferedImage img;

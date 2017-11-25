@@ -21,9 +21,15 @@ public class QuizList {
     }
 
     public static QuizList createQuizList(){
-        Quiz quiz1 = new Quiz("Question 1: choose option 1","option 1","option 2",0);
-        Quiz quiz2 = new Quiz("Question 2: choose option 2","option 1","option 2",1);
-        Quiz quiz3 = new Quiz("Question 3: choose true","true","false",0);
+        Quiz quiz1 = new Quiz("Estuaries typically occur when fresh water meets salt water",
+                "true", "false",0,
+                "Most estuaries are found in coastal\nregions where rivers meet the sea");
+        Quiz quiz2 = new Quiz("Question 2: choose option 2",
+                "option 1","option 2", 1,
+                "option 2 is correct");
+        Quiz quiz3 = new Quiz("Question 3: choose true",
+                "true","false",0,
+                " true is correct answer");
         ArrayList<Quiz> ql = new ArrayList<>(3);
         ql.add(quiz1);
         ql.add(quiz2);

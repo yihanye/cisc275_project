@@ -12,6 +12,8 @@ public class GameView extends JFrame{
 	static MenuPanel menuPane = new MenuPanel();
 	static GamePanel gamePanel = new GamePanel();
 	static QuizPanel quizPanel = new QuizPanel();
+	static ExplanPanel explanPanel = new ExplanPanel();
+	static EndPanel endPanel = new EndPanel();
 
 	final static int frameWidth = 1200;
     final static int frameHeight = 700;
@@ -20,6 +22,8 @@ public class GameView extends JFrame{
 		this.model = model;
 		gamePanel.setModel(model);
 		quizPanel.setModel(model);
+		explanPanel.setModel(model);
+		endPanel.setModel(model);
 	}
 
 	public GameView(){
@@ -50,6 +54,12 @@ public class GameView extends JFrame{
 		}
 		else if(model.getGameState() == GameModel.STATE.QUIZ){
 			quizPanel.paint(g2d);
+		}
+		else if(model.getGameState() == GameModel.STATE.EXPLAN){
+			explanPanel.paint(g2d);
+		}
+		else if(model.getGameState() == GameModel.STATE.END){
+			endPanel.paint(g2d);
 		}
 	}
 

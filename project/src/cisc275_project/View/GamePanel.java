@@ -42,7 +42,8 @@ public class GamePanel extends JPanel {
         paintAnimals(g2d, model.getBlueCrabList(), ImageLoader.gray);
         g2d.drawImage(ImageLoader.net, trans, this);
         g2d.drawString("TIME:"+model.getTime(),1000,100);
-        g2d.drawString("BlueCrab:"+model.getBlueCrabList().number(),1000, 200);
-        g2d.drawString("BlueFish:"+model.getBlueFishList().number(),1000, 300);
+        g2d.drawString("SCORE:"+model.getScore(),1000,200);
+        g2d.drawString("BlueCrab:"+model.getBlueCrabList().number(),1000, 300);
+        g2d.drawString("BlueFish:"+model.getBlueFishList().number(),1000, 400);
     }
 }
