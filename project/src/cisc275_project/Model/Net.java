@@ -83,7 +83,7 @@ public class Net {
 	public boolean getSwing(){ return swing; }
 	public boolean getCaught(){return caught;}
 	public static Net createNet(){
-		return new Net(500,50,0,0,0,10);
+		return new Net(500,80,0,0,0,10);
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class Net {
 	 * When net reached certain degree, change the rotation degree to let net go back
 	 */
 	public void updateRotationDeg() {
-		if (rotation>80||rotation<-80) {
+		if (rotation>50||rotation<-50) {
 			rotationDeg*=-1;
 		}
 	}

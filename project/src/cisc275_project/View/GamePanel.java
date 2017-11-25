@@ -36,14 +36,16 @@ public class GamePanel extends JPanel {
         g2d.drawImage(ImageLoader.mainBackground, 0, 0, this);
         AffineTransform trans = AffineTransform.getTranslateInstance
                 (model.getNet().getxPos(), model.getNet().getyPos());
-        trans.rotate(Math.toRadians(model.getNet().getRotation()));
+        trans.rotate(Math.toRadians(model.getNet().getRotation()),30,0);
 
-        paintAnimals(g2d, model.getBlueFishList(), ImageLoader.green);
-        paintAnimals(g2d, model.getBlueCrabList(), ImageLoader.gray);
+        paintAnimals(g2d, model.getBlueFishList(), ImageLoader.blueFish);
+        paintAnimals(g2d, model.getBlueCrabList(), ImageLoader.blueCrab);
+        paintAnimals(g2d,model.getSummerFlounderList(),ImageLoader.summerFlunder);
         g2d.drawImage(ImageLoader.net, trans, this);
         g2d.drawString("TIME:"+model.getTime(),1000,100);
         g2d.drawString("SCORE:"+model.getScore(),1000,200);
-        g2d.drawString("BlueCrab:"+model.getBlueCrabList().number(),1000, 300);
-        g2d.drawString("BlueFish:"+model.getBlueFishList().number(),1000, 400);
+        g2d.drawString("BlueCrab:" + (3-model.getBlueCrabList().number()),1000, 300);
+        g2d.drawString("BlueFish:" + (3-model.getBlueFishList().number()),1000, 400);
+        g2d.drawString("SummerFlounder:" + (3-model.getSummerFlounderList().number()),1000, 500);
     }
 }

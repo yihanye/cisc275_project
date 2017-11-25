@@ -3,6 +3,7 @@ package project.src.cisc275_project.Model;
 public class GameModel {
 	private Animals blueFishList;
 	private Animals blueCrabList;
+	private Animals summerFlounderList;
 	private int score;
 	private int time;
 	private Net net;
@@ -15,6 +16,7 @@ public class GameModel {
 	public GameModel() {
 		this.blueFishList = BlueFish.createBFList();
 		this.blueCrabList = BlueCrab.createBCList();
+		this.summerFlounderList = SummerFlounder.createSFList();
 		this.net = Net.createNet();
 		this.quiz = QuizList.createQuizList();
 		this.score = 0;
@@ -28,6 +30,11 @@ public class GameModel {
 	public Animals getBlueCrabList() {
 		return blueCrabList;
 	}
+
+	public Animals getSummerFlounderList() {
+		return summerFlounderList;
+	}
+
 	public int getScore() {
 		return score;
 	}
@@ -85,7 +92,9 @@ public class GameModel {
 	}
 
 	public void scoreUpdate(){
-	   score = (6 - getBlueCrabList().getAnimals().size() - getBlueFishList().getAnimals().size())*20
+	   score = (9 - getBlueCrabList().getAnimals().size()
+			   - getBlueFishList().getAnimals().size()-
+			   getSummerFlounderList().getAnimals().size())*20
                + getQuiz().getCurrentNum() * 50;
     }
 
@@ -95,7 +104,7 @@ public class GameModel {
 	 */
 
 	public boolean hasCollision (){
-		return blueCrabList.hasCollision() || blueFishList.hasCollision();
+		return blueCrabList.hasCollision() || blueFishList.hasCollision()|| summerFlounderList.hasCollision();
 	}
 
 	/**
@@ -132,6 +141,7 @@ public class GameModel {
 		if(state == STATE.GAME) {
 			blueFishList.update(net);
 			blueCrabList.update(net);
+			summerFlounderList.update(net);
 			net.update();
 			timeUpdate();
 			scoreUpdate();

@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EndPanel extends JPanel {
-    public static Rectangle startButton = new Rectangle(495,280,200,100);
+    //public static Rectangle startButton = new Rectangle(495,280,200,100);
     static GameModel model;
 
     public EndPanel(){
@@ -21,7 +21,7 @@ public class EndPanel extends JPanel {
 
     public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-        Font fnt = new Font("Garamond", Font.BOLD,60);
+        Font fnt = new Font("TimesRoman", Font.BOLD,60);
         g2d.setFont(fnt);
         g2d.drawImage(ImageLoader.background,0,0,this);
         g2d.setColor(Color.white);
