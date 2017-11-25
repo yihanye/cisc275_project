@@ -124,7 +124,7 @@ public class Net {
 	 * @return whether the net is at edge
 	 */
 	public boolean atEdge() {
-		return xPos<=50||xPos>=950||yPos>=550;
+		return xPos<=50||xPos>=950||yPos>=600;
 	}
 	public void updatePosition() {
 		if(caught){
@@ -156,9 +156,9 @@ public class Net {
 		return !swing & (yInc>0);
 	}
 	public void resetNet(){
-		if(yPos<50) {
+		if(yPos<80) {
 			this.xPos = 500;
-			this.yPos = 50;
+			this.yPos = 80;
 			this.swing = true;
 			this.caught = false;
 		}

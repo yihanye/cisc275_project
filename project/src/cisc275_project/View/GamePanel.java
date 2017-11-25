@@ -11,6 +11,8 @@ import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel {
     static GameModel model;
+    final static int left = 0;
+    final static int right = 1;
 
 
     public GamePanel(){
@@ -22,11 +24,21 @@ public class GamePanel extends JPanel {
         this.model =model;
     }
 
-    public void paintAnimals(Graphics g, Animals animals, BufferedImage img) {
+    public void paintAnimal(Graphics g, Animal a, BufferedImage img){
+        g.drawImage(img,(int)a.getxPos(),(int)a.getyPos(),this);
+    }
+
+    public void paintAnimals(Graphics g, Animals animals, BufferedImage[] imgs) {
         for(Animal a: animals.getAnimals()) {
-            g.drawImage(img, (int)a.getxPos(),(int)a.getyPos(),this);
+            if(a.getxInc()<0){
+                paintAnimal(g,a,imgs[left]);
+            }
+            else {
+                paintAnimal(g,a,imgs[right]);
+            }
         }
     }
+
 
     public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
@@ -40,12 +52,13 @@ public class GamePanel extends JPanel {
 
         paintAnimals(g2d, model.getBlueFishList(), ImageLoader.blueFish);
         paintAnimals(g2d, model.getBlueCrabList(), ImageLoader.blueCrab);
-        paintAnimals(g2d,model.getSummerFlounderList(),ImageLoader.summerFlunder);
+        paintAnimals(g2d,model.getSummerFlounderList(),ImageLoader.summerFlounder);
         g2d.drawImage(ImageLoader.net, trans, this);
+        g2d.drawImage(ImageLoader.boat,430,70,this);
         g2d.drawString("TIME:"+model.getTime(),1000,100);
         g2d.drawString("SCORE:"+model.getScore(),1000,200);
         g2d.drawString("BlueCrab:" + (3-model.getBlueCrabList().number()),1000, 300);
-        g2d.drawString("BlueFish:" + (3-model.getBlueFishList().number()),1000, 400);
+        g2d.drawString("BlueFish:" + (4-model.getBlueFishList().number()),1000, 400);
         g2d.drawString("SummerFlounder:" + (3-model.getSummerFlounderList().number()),1000, 500);
     }
 }

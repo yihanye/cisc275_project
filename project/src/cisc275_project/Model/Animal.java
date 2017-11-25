@@ -15,6 +15,7 @@ public class Animal
 		String name;
 		double xPos, yPos;
 		double xInc, yInc;
+		double upBound, downBound, leftBound, rightBound;
 		boolean caught;
 
 		/**
@@ -24,14 +25,17 @@ public class Animal
 		 * @param yPos the y position of the animal
 		 * @param xInc the x incremnet of the animal
 		 * @param yInc the y increment of the animal
-		 * @param caught the caught status of the animal
 		 */
-	    public Animal(String name,int xPos,int yPos, int xInc, int yInc, boolean caught){
+	    public Animal(String name,int xPos,int yPos, int xInc, int yInc, int upBound, int downBound, int leftBound, int rightBound){
 	        this.name = name;
 	        this.xPos = xPos;
 	        this.yPos = yPos;
 	        this.xInc = xInc;
 	        this.yInc = yInc;
+	        this.upBound = upBound;
+	        this.downBound = downBound;
+	        this.leftBound = leftBound;
+	        this.rightBound = rightBound;
 	        this.caught = false;
 	    }
 
@@ -59,6 +63,9 @@ public class Animal
 			return yPos;
 		}
 
+		public double getxInc(){
+			return xInc;
+		}
 		public boolean getCaught(){ return caught;}
 		/**
 		 * generate the random direction
@@ -79,7 +86,7 @@ public class Animal
 
 		public void updateXDirection(Net n) {
 			if(this.caught == false){
-				if(xPos >= 900 || xPos < 0) {
+				if(xPos >= rightBound || xPos < leftBound) {
 					xInc *= -1;
 				}
 				else {
@@ -99,7 +106,7 @@ public class Animal
 		public void updateYDirection(Net n) {
 			if(this.caught == false){
 
-				if(yPos >= 550 || yPos < 100) {
+				if(yPos >= downBound || yPos <= upBound) {
 					yInc *= -1;
 				}
 				else {
@@ -145,13 +152,6 @@ public class Animal
 			}
 		}
 
-		/**
-		 * if the animal is caught by the net and move at the top of the screen should be removed
-		 * @return whether the fish should be deleted
-		 */
-		public boolean delete(){
-			return this.caught && this.getyPos()<=50;
-		}
 		/**update the status of animal based on the interaction with net
 		 * @param n the net that in the game
 		 */

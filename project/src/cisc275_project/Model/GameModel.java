@@ -20,7 +20,7 @@ public class GameModel {
 		this.net = Net.createNet();
 		this.quiz = QuizList.createQuizList();
 		this.score = 0;
-		this.time = 500;
+		this.time = 5000;
 		this.state = STATE.MENU;
 	}
 	
@@ -92,7 +92,7 @@ public class GameModel {
 	}
 
 	public void scoreUpdate(){
-	   score = (9 - getBlueCrabList().getAnimals().size()
+	   score = (15 - getBlueCrabList().getAnimals().size()
 			   - getBlueFishList().getAnimals().size()-
 			   getSummerFlounderList().getAnimals().size())*20
                + getQuiz().getCurrentNum() * 50;

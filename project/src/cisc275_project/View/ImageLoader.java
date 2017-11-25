@@ -6,14 +6,12 @@ import java.io.File;
 import java.io.IOException;
 
 public class ImageLoader {
-    static BufferedImage green = createImg("green");
-    static BufferedImage gray = createImg("gray");
-    static BufferedImage bass = createImg("bass");
-    static BufferedImage summerFlunder = createImg("summerFlunder");
-    static BufferedImage blueFish = createImg("blueFish");
+    static BufferedImage[] summerFlounder = createPicArray("summerFlounderLeft", "summerFlounderRight");
+    static BufferedImage[] blueFish = createPicArray("blueFishLeft","blueFishRight");
+    static BufferedImage[] blueCrab = createPicArray("blueCrab","blueCrab");
     static BufferedImage background = createImg("background");
     static BufferedImage net = createImg("net");
-    static BufferedImage blueCrab = createImg("blueCrab");
+    static BufferedImage boat = createImg("boat");
     static BufferedImage quizBackground = createImg("quizBackground");
     static BufferedImage mainBackground = createImg("mainBackground");
     static BufferedImage explanBackground = createImg("explanBackground");
@@ -29,6 +27,16 @@ public class ImageLoader {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static BufferedImage[] createPicArray(String left, String right) {
+        BufferedImage[] result = new BufferedImage[2];
+        BufferedImage picLeft = createImg(left);
+        BufferedImage picRight = createImg(right);
+
+        result[0] = picLeft;
+        result[1] = picRight;
+        return result;
     }
 
 }

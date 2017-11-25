@@ -6,13 +6,14 @@ import java.util.List;
 public class SummerFlounder extends Animal{
 
         public SummerFlounder(int xPos, int yPos){
-            super("SummerFlounder",xPos, yPos, 4,1,false);
+
+            super("SummerFlounder",xPos, yPos, 4,1, 300, 550, 0 ,900);
         }
 
         public static Animals createSFList(){
-            SummerFlounder sf1 = new SummerFlounder(600,100);
-            SummerFlounder sf2 = new SummerFlounder(200,400);
-            SummerFlounder sf3 = new SummerFlounder(100,300);
+            SummerFlounder sf1 = new SummerFlounder(600,350);
+            SummerFlounder sf2 = new SummerFlounder(200,450);
+            SummerFlounder sf3 = new SummerFlounder(100,500);
 
             List<Animal> sfList = new ArrayList<>();
             sfList.add(sf1);

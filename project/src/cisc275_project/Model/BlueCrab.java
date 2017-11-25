@@ -18,7 +18,7 @@ public class BlueCrab extends Animal {
 	 * @param yPos the y position of crab
 	 */
 	public BlueCrab(int xPos, int yPos) {
-		super("BlueCrab", xPos, yPos, 2, 1, false);
+		super("BlueCrab", xPos, yPos, 2, 0, 300,500,0,900);
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class BlueCrab extends Animal {
 	 * @return Animal
 	 */
 	public static Animals createBCList() {
-		BlueCrab bc1 = new BlueCrab(300, 300);
-		BlueCrab bc2 = new BlueCrab(200, 400);
-		BlueCrab bc3 = new BlueCrab(100, 500);
+		BlueCrab bc1 = new BlueCrab(800, 640);
+		BlueCrab bc2 = new BlueCrab(500, 620);
+		BlueCrab bc3 = new BlueCrab(100, 600);
 
 		List<Animal> bcList = new ArrayList<Animal>();
 		bcList.add(bc1);
