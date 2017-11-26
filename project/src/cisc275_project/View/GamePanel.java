@@ -44,7 +44,7 @@ public class GamePanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         Font fnt = new Font("Garamond", Font.BOLD,40);
         g2d.setFont(fnt);
-        g2d.setColor(Color.white);
+        g2d.setColor(Color.black);
         g2d.drawImage(ImageLoader.mainBackground, 0, 0, this);
         AffineTransform trans = AffineTransform.getTranslateInstance
                 (model.getNet().getxPos(), model.getNet().getyPos());
@@ -56,10 +56,13 @@ public class GamePanel extends JPanel {
         paintAnimals(g2d,model.getBassFishList(),ImageLoader.bassFish);
         g2d.drawImage(ImageLoader.net, trans, this);
         g2d.drawImage(ImageLoader.boat,430,70,this);
-        g2d.drawString("TIME:"+model.getTime(),1000,100);
-        g2d.drawString("SCORE:"+model.getScore(),1000,200);
-        g2d.drawString("BlueCrab:" + (3-model.getBlueCrabList().number()),1000, 300);
-        g2d.drawString("BlueFish:" + (4-model.getBlueFishList().number()),1000, 400);
-        g2d.drawString("SummerFlounder:" + (3-model.getSummerFlounderList().number()),1000, 500);
+        g2d.drawString(""+model.getTime(),1050,100);
+        g2d.drawString(""+model.getScore(),1050,200);
+        g2d.drawString("" + (4-model.getBassFishList().number()),1150, 310);
+        g2d.drawString("" + (4-model.getBlueFishList().number()),1150, 400);
+        g2d.drawString("" + (3-model.getSummerFlounderList().number()),1150, 490);
+        g2d.drawString("" + (3-model.getBlueCrabList().number()),1150, 580);
+        g2d.drawString("0",1150, 660);
+
     }
 }

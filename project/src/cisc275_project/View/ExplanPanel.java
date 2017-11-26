@@ -27,8 +27,6 @@ public class ExplanPanel extends JPanel{
 
     public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-        Font fnt = new Font("TimesRoman", Font.BOLD,20);
-        g2d.setFont(fnt);
         g2d.drawImage(ImageLoader.explanBackground,350,160,this);
         g2d.setColor(Color.BLACK);
         drawString(g2d,model.getQuiz().getCurrentQuiz().getExplanation(),500,300);

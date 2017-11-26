@@ -18,7 +18,7 @@ public class BlueFish extends Animal {
 	 * @param yPos the y position of fish
 	 */
 	public BlueFish(int xPos, int yPos) {
-		super("blue_fish", xPos, yPos, 2, 1, 200,400,0,900);
+		super("blue_fish", xPos, yPos, 2, 1, 200,400,0,850);
 	}
 	//create BlueFishList
 	/**

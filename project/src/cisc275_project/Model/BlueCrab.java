@@ -18,7 +18,7 @@ public class BlueCrab extends Animal {
 	 * @param yPos the y position of crab
 	 */
 	public BlueCrab(int xPos, int yPos) {
-		super("BlueCrab", xPos, yPos, 2, 0, 300,500,0,900);
+		super("BlueCrab", xPos, yPos, 2, 0, 300,500,0,850);
 	}
 
 	/**

@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class AskHelpPanel extends JPanel {
     public static Rectangle startButton = new Rectangle(420,500,180,50);
-    //static GameModel model = model;
 
     public AskHelpPanel(){
         JPanel menuPanel = new JPanel();
@@ -17,7 +16,6 @@ public class AskHelpPanel extends JPanel {
 
     public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.black);
         g2d.drawImage(ImageLoader.askBackground,0,0,this);
         g2d.setColor(Color.RED);
         g2d.draw(startButton);

@@ -7,7 +7,7 @@ public class SummerFlounder extends Animal{
 
         public SummerFlounder(int xPos, int yPos){
 
-            super("SummerFlounder",xPos, yPos, 4,1, 300, 550, 0 ,900);
+            super("SummerFlounder",xPos, yPos, 4,1, 300, 550, 0 ,850);
         }
 
         public static Animals createSFList(){
