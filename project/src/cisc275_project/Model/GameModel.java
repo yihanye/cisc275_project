@@ -10,7 +10,7 @@ public class GameModel {
 	private Net net;
 	private QuizList quiz;
 	private boolean quizable= true;
-	public enum STATE{MENU,ASKHELP,GAME,QUIZ,EXPLAN,END}
+	public enum STATE{MENU,ASKHELP,INFO,GAME,QUIZ,EXPLAN,END}
 	private STATE state;
 
 	//Constructor
@@ -78,6 +78,12 @@ public class GameModel {
 		else if(getGameState() == STATE.ASKHELP){
 			boolean ofCourseButton = x<600 && x>420 && y<550 && y>500;
 			if(ofCourseButton){
+				setState(STATE.INFO);
+			}
+		}
+		else if(getGameState() == STATE.INFO){
+			boolean button = x<1160 && x>910 && y<700 && y>640;
+			if(button){
 				setState(STATE.GAME);
 			}
 		}

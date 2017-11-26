@@ -14,6 +14,7 @@ public class GameView extends JFrame{
 	static GamePanel gamePanel = new GamePanel();
 	static QuizPanel quizPanel = new QuizPanel();
 	static ExplanPanel explanPanel = new ExplanPanel();
+	static InfoPanel infoPanel = new InfoPanel();
 	static EndPanel endPanel = new EndPanel();
 
 	final static int frameWidth = 1200;
@@ -52,6 +53,9 @@ public class GameView extends JFrame{
 		}
 		else if(model.getGameState() == GameModel.STATE.ASKHELP){
 			askHelpPanel.paint(g2d);
+		}
+		else if(model.getGameState() == GameModel.STATE.INFO){
+			infoPanel.paint(g2d);
 		}
 		else if(model.getGameState() == GameModel.STATE.GAME){
 			gamePanel.paint(g2d);
