@@ -53,6 +53,7 @@ public class GamePanel extends JPanel {
         paintAnimals(g2d, model.getBlueFishList(), ImageLoader.blueFish);
         paintAnimals(g2d, model.getBlueCrabList(), ImageLoader.blueCrab);
         paintAnimals(g2d,model.getSummerFlounderList(),ImageLoader.summerFlounder);
+        paintAnimals(g2d,model.getBassFishList(),ImageLoader.bassFish);
         g2d.drawImage(ImageLoader.net, trans, this);
         g2d.drawImage(ImageLoader.boat,430,70,this);
         g2d.drawString("TIME:"+model.getTime(),1000,100);

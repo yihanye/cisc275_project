@@ -10,6 +10,7 @@ import javax.swing.*;
 public class GameView extends JFrame{
 	static GameModel model = new GameModel();
 	static MenuPanel menuPane = new MenuPanel();
+	static AskHelpPanel askHelpPanel = new AskHelpPanel();
 	static GamePanel gamePanel = new GamePanel();
 	static QuizPanel quizPanel = new QuizPanel();
 	static ExplanPanel explanPanel = new ExplanPanel();
@@ -48,6 +49,9 @@ public class GameView extends JFrame{
 		Graphics2D g2d = (Graphics2D) g;
 		if(model.getGameState() == GameModel.STATE.MENU){
 			menuPane.paint(g2d);
+		}
+		else if(model.getGameState() == GameModel.STATE.ASKHELP){
+			askHelpPanel.paint(g2d);
 		}
 		else if(model.getGameState() == GameModel.STATE.GAME){
 			gamePanel.paint(g2d);

@@ -8,8 +8,10 @@ import java.io.IOException;
 public class ImageLoader {
     static BufferedImage[] summerFlounder = createPicArray("summerFlounderLeft", "summerFlounderRight");
     static BufferedImage[] blueFish = createPicArray("blueFishLeft","blueFishRight");
+    static BufferedImage[] bassFish = createPicArray("bassFishLeft","bassFishRight");
     static BufferedImage[] blueCrab = createPicArray("blueCrab","blueCrab");
     static BufferedImage background = createImg("background");
+    static BufferedImage askBackground = createImg("askHelpBackground");
     static BufferedImage net = createImg("net");
     static BufferedImage boat = createImg("boat");
     static BufferedImage quizBackground = createImg("quizBackground");

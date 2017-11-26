@@ -4,12 +4,13 @@ public class GameModel {
 	private Animals blueFishList;
 	private Animals blueCrabList;
 	private Animals summerFlounderList;
+	private Animals bassFishList;
 	private int score;
 	private int time;
 	private Net net;
 	private QuizList quiz;
 	private boolean quizable= true;
-	public enum STATE{MENU,GAME,QUIZ,EXPLAN,END}
+	public enum STATE{MENU,ASKHELP,GAME,QUIZ,EXPLAN,END}
 	private STATE state;
 
 	//Constructor
@@ -17,6 +18,7 @@ public class GameModel {
 		this.blueFishList = BlueFish.createBFList();
 		this.blueCrabList = BlueCrab.createBCList();
 		this.summerFlounderList = SummerFlounder.createSFList();
+		this.bassFishList = BassFish.createBFList();
 		this.net = Net.createNet();
 		this.quiz = QuizList.createQuizList();
 		this.score = 0;
@@ -30,9 +32,12 @@ public class GameModel {
 	public Animals getBlueCrabList() {
 		return blueCrabList;
 	}
-
 	public Animals getSummerFlounderList() {
 		return summerFlounderList;
+	}
+
+	public Animals getBassFishList() {
+		return bassFishList;
 	}
 
 	public int getScore() {
@@ -65,11 +70,17 @@ public class GameModel {
 		}
 
 		else if(getGameState() == STATE.MENU){
-			if(x<795 && x>495 && y<380 && y>280){
+			boolean startButton =x<705 && x>495 && y<425 && y>355;
+				if(startButton){
+				setState(STATE.ASKHELP);
+			}
+		}
+		else if(getGameState() == STATE.ASKHELP){
+			boolean ofCourseButton = x<600 && x>420 && y<550 && y>500;
+			if(ofCourseButton){
 				setState(STATE.GAME);
 			}
 		}
-
 		else if(getGameState() == STATE.QUIZ){
 			boolean option1 = (x>400 && x<500 && y > 450 && y<500);
 			boolean option2 = (x>700 && x<800 && y > 450 && y<500);
@@ -104,7 +115,8 @@ public class GameModel {
 	 */
 
 	public boolean hasCollision (){
-		return blueCrabList.hasCollision() || blueFishList.hasCollision()|| summerFlounderList.hasCollision();
+		return blueCrabList.hasCollision() || blueFishList.hasCollision()||
+				summerFlounderList.hasCollision()||bassFishList.hasCollision();
 	}
 
 	/**
@@ -142,6 +154,7 @@ public class GameModel {
 			blueFishList.update(net);
 			blueCrabList.update(net);
 			summerFlounderList.update(net);
+			bassFishList.update(net);
 			net.update();
 			timeUpdate();
 			scoreUpdate();
