@@ -44,7 +44,7 @@ public class GamePanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         Font fnt = new Font("Garamond", Font.BOLD,40);
         g2d.setFont(fnt);
-        g2d.setColor(Color.black);
+        g2d.setColor(new Color(155,90,7));
         g2d.drawImage(ImageLoader.mainBackground, 0, 0, this);
         AffineTransform trans = AffineTransform.getTranslateInstance
                 (model.getNet().getxPos(), model.getNet().getyPos());

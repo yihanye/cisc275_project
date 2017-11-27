@@ -124,7 +124,7 @@ public class Net {
 	 * @return whether the net is at edge
 	 */
 	public boolean atEdge() {
-		return xPos<=50||xPos>=950||yPos>=600;
+		return xPos<=50||xPos>=850||yPos>=600;
 	}
 	public void updatePosition() {
 		if(caught){

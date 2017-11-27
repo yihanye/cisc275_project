@@ -13,9 +13,10 @@ public class ImageLoader {
     static BufferedImage background = createImg("background");
     static BufferedImage askBackground = createImg("askHelpBackground");
     static BufferedImage infoBackground = createImg("infoPage");
+    static BufferedImage endPage = createImg("endPage");
     static BufferedImage net = createImg("net");
     static BufferedImage boat = createImg("boat");
-    static BufferedImage quizBackground = createImg("quizBackground");
+    static BufferedImage quizBackground = createImg("quizPage");
     static BufferedImage mainBackground = createImg("mainBackground");
     static BufferedImage explanBackground = createImg("explanBackground");
     static BufferedImage startBackground = createImg("startBackground");

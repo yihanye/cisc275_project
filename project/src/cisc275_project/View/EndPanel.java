@@ -6,12 +6,10 @@ import javax.swing.*;
 import java.awt.*;
 
 public class EndPanel extends JPanel {
-    //public static Rectangle startButton = new Rectangle(495,280,200,100);
     static GameModel model;
 
     public EndPanel(){
         JPanel menuPanel = new JPanel();
-        menuPanel.setBackground(Color.black);
         add(menuPanel);
     }
 
@@ -23,10 +21,9 @@ public class EndPanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         Font fnt = new Font("TimesRoman", Font.BOLD,60);
         g2d.setFont(fnt);
-        g2d.drawImage(ImageLoader.background,0,0,this);
-        g2d.setColor(Color.white);
-        //g2d.draw(startButton);
-        g2d.drawString("SCORE:" + model.getScore(),500,350);
+        g2d.drawImage(ImageLoader.endPage,0,0,this);
+        g2d.setColor(new Color(201,20,62));
+        g2d.drawString("" + model.getScore(),700,320);
     }
 
 }

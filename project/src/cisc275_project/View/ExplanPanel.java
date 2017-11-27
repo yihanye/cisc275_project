@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class ExplanPanel extends JPanel{
     static GameModel model;
-    public static Rectangle gotIt = new Rectangle(550,400,100,50);
 
 
     public ExplanPanel(){
@@ -27,12 +26,13 @@ public class ExplanPanel extends JPanel{
 
     public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(ImageLoader.explanBackground,350,160,this);
-        g2d.setColor(Color.BLACK);
-        drawString(g2d,model.getQuiz().getCurrentQuiz().getExplanation(),500,300);
-        g2d.drawString(""+model.getQuiz().getCurrentQuiz().getResult(),500,200);
-        g2d.drawString("Got It",560,430);
-        g2d.draw(gotIt);
+        Font fnt = new Font("TimesRoman", Font.BOLD,25);
+        g2d.setFont(fnt);
+        g2d.setColor(new Color(85,50,7));
+        g2d.drawImage(ImageLoader.explanBackground,0,0,this);
+        g2d.drawString(""+model.getQuiz().getCurrentQuiz().getResult(),300,230);
+        drawString(g2d,model.getQuiz().getCurrentQuiz().getExplanation(),300,250);
+        g2d.drawString("Got it!",520,440);
     }
 }
 

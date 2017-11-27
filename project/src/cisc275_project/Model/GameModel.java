@@ -7,6 +7,7 @@ public class GameModel {
 	private Animals bassFishList;
 	private int score;
 	private int time;
+	private int quizCorrect;
 	private Net net;
 	private QuizList quiz;
 	private boolean quizable= true;
@@ -21,8 +22,9 @@ public class GameModel {
 		this.bassFishList = BassFish.createBFList();
 		this.net = Net.createNet();
 		this.quiz = QuizList.createQuizList();
+		this.quizCorrect = 0;
 		this.score = 0;
-		this.time = 5000;
+		this.time = 200;
 		this.state = STATE.MENU;
 	}
 	
@@ -88,17 +90,18 @@ public class GameModel {
 			}
 		}
 		else if(getGameState() == STATE.QUIZ){
-			boolean option1 = (x>400 && x<500 && y > 450 && y<500);
-			boolean option2 = (x>700 && x<800 && y > 450 && y<500);
+			boolean option1 = (x>370 && x<480 && y > 410 && y<470);
+			boolean option2 = (x>650 && x<760 && y > 410 && y<470);
 			if(getQuiz().getCurrentQuiz().checkAnswer(option1,option2)){
 				getQuiz().getCurrentQuiz().setCorrectornot(true);
+				quizCorrect++;
 			}
 			if(option1||option2){
 				setState(STATE.EXPLAN);
 			}
 		}
 		else if(getGameState() == STATE.EXPLAN){
-			if(x<650 && x>550 && y<450 && y>400){
+			if(x<630 && x>470 && y<470 && y>410){
 				switchBackToGame();
 			}
 		}
@@ -109,10 +112,11 @@ public class GameModel {
 	}
 
 	public void scoreUpdate(){
-	   score = (15 - getBlueCrabList().getAnimals().size()
-			   - getBlueFishList().getAnimals().size()-
-			   getSummerFlounderList().getAnimals().size())*20
-               + getQuiz().getCurrentNum() * 50;
+	   score = (4 - getBassFishList().getAnimals().size())*10+
+			   (4 - getBlueFishList().getAnimals().size())*10+
+			   (3 - getSummerFlounderList().getAnimals().size())*30+
+			   (3 - getBlueCrabList().getAnimals().size())*50+
+			   quizCorrect*100;
     }
 
 	/**
@@ -185,7 +189,6 @@ public class GameModel {
 			System.out.println(" One " +model.getBlueCrabList().getAnimals().get(0));
 			System.out.println(" One " +model.getBlueFishList().getAnimals().get(0));
 			System.out.println(" ");
-
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
