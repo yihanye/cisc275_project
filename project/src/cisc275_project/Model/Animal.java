@@ -136,7 +136,11 @@ public class Animal
 		 */
 
 		public boolean isCollision(Net n){
-	    	return (n.goDown()) & (Math.abs(getxPos()-n.getxPos())<50) & (Math.abs(getyPos()-n.getyPos())<50) & (!n.getCaught());
+	    	return (n.goDown())&
+					(!n.getCaught())&
+					(getxPos()-n.getxPos()<20)&(getxPos()-n.getxPos()>-50)&
+					(getyPos()-n.getyPos()<60)&(getyPos()-n.getyPos()>20);
+					//(Math.abs(getyPos()-n.getyPos())<50) ;
 		}
 
 
