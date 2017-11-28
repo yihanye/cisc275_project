@@ -86,12 +86,20 @@ public class Net {
 		return new Net(500,80,0,0,0,10);
 	}
 
+	public int getCenterPosX(){
+		return (int)(((Math.sin(Math.toRadians(getRotation())))*-60))+ (int)getxPos()+30;
+	}
+
+	public int getCenterPosY(){
+		return (int)(((Math.cos(Math.toRadians(getRotation())))*60))+ (int)getyPos();
+	}
+
 	/**
 	 * update the net increment based on the current degree
 	 */
 	public void updateInc(){
-		this.xInc = -Math.sin(Math.toRadians(rotation))*10;
-		this.yInc = Math.cos(Math.toRadians(rotation))*10;
+		this.xInc = -Math.sin(Math.toRadians(rotation))*20;
+		this.yInc = Math.cos(Math.toRadians(rotation))*20;
 	}
 
 	/**
@@ -137,6 +145,7 @@ public class Net {
 			}
 			xPos +=xInc;
 			yPos += yInc;
+
 		}
 	}
 

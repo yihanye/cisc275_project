@@ -85,17 +85,12 @@ public class Animal
 		 */
 
 		public void updateXDirection(Net n) {
-			if(this.caught == false){
 				if(xPos >= rightBound || xPos < leftBound) {
 					xInc *= -1;
 				}
 				else {
 					xInc = xInc * randomDirection();
 				}
-			}
-			else{
-				xInc = -n.getxInc();
-			}
 		}
 
 		/**
@@ -104,7 +99,6 @@ public class Animal
 		 * otherwise this animal's direction will change randomly
 		 */
 		public void updateYDirection(Net n) {
-			if(this.caught == false){
 
 				if(yPos >= downBound || yPos <= upBound) {
 					yInc *= -1;
@@ -112,10 +106,8 @@ public class Animal
 				else {
 					yInc = yInc * randomDirection();
 				}
-			}
-			else{
-				yInc = -n.getyInc();
-			}
+
+
 		}
 
 		/**
@@ -123,10 +115,17 @@ public class Animal
 		 *
 		 */
 		public void updatePosition(Net n) {
-			updateXDirection(n);
-			updateYDirection(n);
-			xPos = xPos + xInc;
-			yPos = yPos + yInc;
+			if(!this.caught){
+				updateXDirection(n);
+				updateYDirection(n);
+				xPos = xPos + xInc;
+				yPos = yPos + yInc;
+			}
+			else{
+				xPos = n.getCenterPosX()-50;
+				yPos = n.getCenterPosY()-30;
+			}
+
 		}
 
 		/**
@@ -136,11 +135,13 @@ public class Animal
 		 */
 
 		public boolean isCollision(Net n){
-	    	return (n.goDown())&
-					(!n.getCaught())&
-					(getxPos()-n.getxPos()<20)&(getxPos()-n.getxPos()>-50)&
-					(getyPos()-n.getyPos()<60)&(getyPos()-n.getyPos()>20);
-					//(Math.abs(getyPos()-n.getyPos())<50) ;
+			//net center location
+			int nX  = n.getCenterPosX();
+			int nY = n.getCenterPosY();
+			return (n.goDown())&&
+					(!n.getCaught())&&
+					(nX-getxPos()>0)&&(nX-getxPos()<100)&&
+					(nY-getyPos()>10)&&(nY-getyPos()<80);
 		}
 
 
@@ -150,6 +151,7 @@ public class Animal
 		 * @param n the net in the game
 		 */
 		public void updateCollision(Net n){
+
 			if(isCollision(n)){
 				this.caught = true;
 				n.updateCollision();

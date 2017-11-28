@@ -21,20 +21,33 @@ public class QuizList {
     }
 
     public static QuizList createQuizList(){
-        Quiz quiz1 = new Quiz("Estuaries typically occur when fresh water\nmeets salt water" +
-                "\n\n A.True \n\n B.False",
-                "true", "false",0,
-                "Most estuaries are found in coastalregions where\nrivers meet the sea");
-        Quiz quiz2 = new Quiz("Question 2: choose B",
-                "option 1","option 2", 1,
-                "B is correct");
-        Quiz quiz3 = new Quiz("Question 3: choose A",
-                "true","false",0,
-                " A is correct answer");
+        Quiz quiz1 = new Quiz("Estuaries typically occur when fresh water" +
+                "\nmeets salt water" +
+                "\n\n A.True \n\n B.False", 0,
+                "Most estuaries are found in coastal regions where" +
+                        "\nrivers meet the sea");
+        Quiz quiz2 = new Quiz("Estuaries only exist in warm climate."+
+                "\n\n A.True \n\n B.False", 1,
+                "Estuaries are found along almost every coastline" +
+                        "\nworld-wide");
+        Quiz quiz3 = new Quiz("There are many different types of estuaries"+
+                "\n\n A.True \n\n B.False", 0,
+                "Different types of estuaries are formed by different" +
+                        "\ngeological events");
+        Quiz quiz4 = new Quiz("Estuaries are geological structures"+
+                "\n\n A.True \n\n B.False",0,
+                "Estuaries are formed form interactions between" +
+                        "\nwater and land masses");
+        Quiz quiz5 = new Quiz("All estuaries contain brackish water"+
+                "\n\n A.True \n\n B.False",1,
+                "Some estuaries are formed where rivers meet large\n" +
+                        "bodies of fresh water, such as in the Great Lakes");
         ArrayList<Quiz> ql = new ArrayList<>(3);
         ql.add(quiz1);
         ql.add(quiz2);
         ql.add(quiz3);
+        ql.add(quiz4);
+        ql.add(quiz5);
         return new QuizList(ql,0);
     }
 
@@ -43,7 +56,7 @@ public class QuizList {
     }
 
     public void nextQuiz(){
-        currentNum = (currentNum+1)%3;
+        currentNum = (currentNum+1)%5;
     }
 
 }

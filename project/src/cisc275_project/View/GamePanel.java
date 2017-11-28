@@ -41,6 +41,14 @@ public class GamePanel extends JPanel {
 
 
     public void paint(Graphics g){
+        // for the center of net
+        double d = model.getNet().getRotation();
+        int x  = (int)(((Math.sin(Math.toRadians(d)))*-60))+ (int)model.getNet().getxPos()+30;
+        int y = (int)(((Math.cos(Math.toRadians(d)))*60))+ (int)model.getNet().getyPos();
+        Rectangle rec  = new Rectangle(x,y,5,5);
+        AffineTransform trans1 = AffineTransform.getTranslateInstance(300, 300);
+        trans1.rotate(Math.toRadians(d),30,0);
+
         Graphics2D g2d = (Graphics2D) g;
         Font fnt = new Font("Garamond", Font.BOLD,40);
         g2d.setFont(fnt);
@@ -55,14 +63,15 @@ public class GamePanel extends JPanel {
         paintAnimals(g2d,model.getSummerFlounderList(),ImageLoader.summerFlounder);
         paintAnimals(g2d,model.getBassFishList(),ImageLoader.bassFish);
         g2d.drawImage(ImageLoader.net, trans, this);
-        g2d.drawImage(ImageLoader.boat,430,70,this);
-        g2d.drawString(""+model.getTime(),1050,100);
+        g2d.draw(rec);
+        g2d.drawImage(ImageLoader.boat,420,20,this);
+        g2d.drawString(""+(model.getTime()/10),1050,100);
         g2d.drawString(""+model.getScore(),1050,200);
         g2d.drawString("" + (4-model.getBassFishList().number()),1150, 310);
         g2d.drawString("" + (4-model.getBlueFishList().number()),1150, 400);
         g2d.drawString("" + (3-model.getSummerFlounderList().number()),1150, 490);
         g2d.drawString("" + (3-model.getBlueCrabList().number()),1150, 580);
-        g2d.drawString("0",1150, 660);
+        g2d.drawString(""+model.getQuizCorrect(),1150, 660);
 
     }
 }

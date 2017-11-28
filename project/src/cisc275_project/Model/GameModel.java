@@ -24,7 +24,7 @@ public class GameModel {
 		this.quiz = QuizList.createQuizList();
 		this.quizCorrect = 0;
 		this.score = 0;
-		this.time = 500;
+		this.time = 600;
 		this.state = STATE.MENU;
 	}
 	
@@ -50,6 +50,9 @@ public class GameModel {
 	public boolean getQuizable(){return quizable;}
 	public int getTime() {
 		return time;
+	}
+	public int getQuizCorrect(){
+		return quizCorrect;
 	}
 	public Net getNet() {
 		return net;

@@ -10,12 +10,11 @@ public class ImageLoader {
     static BufferedImage[] blueFish = createPicArray("blueFishLeft","blueFishRight");
     static BufferedImage[] bassFish = createPicArray("bassFishLeft","bassFishRight");
     static BufferedImage[] blueCrab = createPicArray("blueCrab","blueCrab");
-    static BufferedImage background = createImg("background");
     static BufferedImage askBackground = createImg("askHelpBackground");
     static BufferedImage infoBackground = createImg("infoPage");
     static BufferedImage endPage = createImg("endPage");
     static BufferedImage net = createImg("net");
-    static BufferedImage boat = createImg("boat");
+    static BufferedImage boat = createImg("boatChild");
     static BufferedImage quizBackground = createImg("quizPage");
     static BufferedImage mainBackground = createImg("mainBackground");
     static BufferedImage explanBackground = createImg("explanBackground");
