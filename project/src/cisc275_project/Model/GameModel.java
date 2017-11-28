@@ -24,7 +24,7 @@ public class GameModel {
 		this.quiz = QuizList.createQuizList();
 		this.quizCorrect = 0;
 		this.score = 0;
-		this.time = 600;
+		this.time = 300;
 		this.state = STATE.MENU;
 	}
 	
